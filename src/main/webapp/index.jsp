@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.List"%>
 <%@ page import="models.Medicamento"%>
+<%@ page import="models.Marca"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,8 +18,8 @@
 		<nav class="flex items-center justify-between max-w-screen-xl mx-auto">
 			
 			<div class="flex items-center gap-2">
-				<i class="fas fa-clinic-medical text-3xl text-green-600"></i> <span
-					class="font-bold text-2xl text-green-600">Farmacia</span>
+				<i class="fas fa-clinic-medical text-3xl text-green-600"></i>
+				 <span class="font-bold text-2xl text-green-600">Farmacia</span>				
 			</div>
 		
 			<div class="relative flex items-center">
@@ -34,13 +35,16 @@
 				<a href="/app-prueba"
 					class="text-gray-700 text-sm flex items-center gap-1 hover:text-green-600">
 					<i class="fas fa-home"></i> Inicio
-				</a> <a href="# "
+				</a> 
+				<a href="# "
 					class="text-gray-700 text-sm flex items-center gap-1 hover:text-green-600">
 					<i class="fas fa-address-book"></i> Contacto
-				</a> <a href="#"
+				</a>
+				 <a href="#"
 					class="text-gray-700 text-sm flex items-center gap-1 hover:text-green-600">
 					<i class="fas fa-user"></i> Iniciar sesión
-				</a> <a href="#"
+				</a> 
+				<a href="#"
 					class="text-gray-700 text-sm flex items-center gap-1 hover:text-green-600">
 					<i class="fas fa-user-circle"></i> Registro
 				</a>
@@ -61,19 +65,32 @@
 				alt="Fármaco">
 		</div>
 
+		<%
+		List<Marca> marcas = (List<Marca>) request.getAttribute("marcas");
+		if (marcas != null && !marcas.isEmpty()) {
+		%>
 		<div class="flex flex-row flex-wrap justify-center p-4 gap-4">
-			
+			<%
+			for (Marca marca : marcas) {
+			%>
 			<div class="flex flex-col items-center">
-				<a href="#"> <img
-					class="p-4 w-32 h-26 rounded-full" alt=""
-					src="">
+				<a href="panadol-medicamentos?idMarca=<%= marca.getIdMarca() %>">
+				 <img class="p-4 w-32 h-26 rounded-full" alt="" src="<%=marca.getImagenUrl()%>">				
 				</a>
-				<h4 class="text-center font-semibold text-gray-700">Marca</h4>
+				<h4 class="text-center font-semibold text-gray-700"><%=marca.getNombre()%></h4>
 			</div>
 
+			<%
+			}
+			%>
 		</div>
-		
+		<%
+		} else {
+		%>
 		<p>No se encontraron registros</p>
+		<%
+		}
+		%>
 
 		<div class="flex flex-row gap-4 mt-4">
 
@@ -86,17 +103,11 @@
 						</label>
 						<div class="flex flex-col space-y-2">
 							<div class="flex items-center">
-								<input type="checkbox" id=""
-									name="categoria" value=""
-									class="mr-2 cursor-pointer filter-checkbox">
-						       <label
-									for=""
-									class="text-gray-700 cursor-pointer">
+								<input type="checkbox" id="" name="categoria" value=""  class="mr-2 cursor-pointer filter-checkbox">							
+						       <label for="" class="text-gray-700 cursor-pointer">									
 								</label>
-							</div>
-							
-							<p class="text-gray-500">No se encontraron registros</p>
-							
+							</div>						
+							<p class="text-gray-500">No se encontraron registros</p>						
 						</div>
 					</div>
 					
@@ -105,12 +116,10 @@
 						</label>
 						<div class="flex flex-col space-y-2">
 							<div class="flex items-center">
-								<input type="checkbox" id="" name="categoria" value=""
-									class="mr-2"> <label for="" class="text-gray-700">Opcion</label>
-							</div>
-							
-							<p class="text-gray-500">No se encontraron registros</p>
-							
+								<input type="checkbox" id="" name="categoria" value="" class="mr-2">
+								  <label for="" class="text-gray-700">Opcion</label>
+							</div>						
+							<p class="text-gray-500">No se encontraron registros</p>						
 						</div>
 					</div>
 				</div>
@@ -129,13 +138,14 @@
 						class="bg-white p-4 rounded-md border border-gray-300 hover:border-green-600 cursor-pointer flex flex-col items-center">
 						<img class="rounded-sm mb-2"
 							src="<%=medicamento.getImagenUrl()%>"
-							alt="<%=medicamento.getNombre()%>" width="150"> <span
-							class="text-sm text-gray-500"><%=medicamento.getIdPresentacion()%></span>
+							alt="<%=medicamento.getNombre()%>" width="150">
+							 <span class="text-sm text-gray-500"><%=medicamento.getIdPresentacion()%></span>						
 						<p class="text-center font-bold text-gray-600"><%=medicamento.getNombre()%></p>
 						<span class="text-lg font-semibold">S/ <%=String.format("%.2f", medicamento.getPrecioUnitario()).replace(',', '.')%></span>
 						<button
 							class="w-full h-12 bg-green-700 text-white font-semibold rounded-full shadow-md hover:bg-green-600 transition duration-300 mt-2 cursor-pointer">
-							Agregar al carrito</button>
+							Agregar al carrito
+						</button>
 					</div>
 					<%
 					}

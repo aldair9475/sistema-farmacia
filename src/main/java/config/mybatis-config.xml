@@ -22,5 +22,6 @@
     <mappers>
         <!-- Para usar el XML, se referencia con 'resource' -->
          <mapper resource="dao/MedicamentoMapper.xml"/>
+         <mapper resource="dao/MarcaMapper.xml"/>
     </mappers>
 </configuration>
