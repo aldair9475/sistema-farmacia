@@ -1,33 +1,39 @@
 package controllers;
 
 import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class MedicamentosServlet
- */
+import models.Medicamento;
+import services.MedicamentoService;
+import services.impl.MedicamentoServiceImpl;
+
 @WebServlet("/medicamentos")
 public class MedicamentosServlet extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
+	private final MedicamentoService medicamentoService;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+    
     public MedicamentosServlet() {
         super();
-        // TODO Auto-generated constructor stub
+        medicamentoService = new MedicamentoServiceImpl();
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		List<Medicamento> medicamentos = medicamentoService.listarMedicamentos();
+		request.setAttribute("medicamentos", medicamentos);
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+		dispatcher.forward(request, response);
 	}
 
 	/**
