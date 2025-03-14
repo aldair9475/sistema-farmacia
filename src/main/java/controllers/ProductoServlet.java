@@ -52,8 +52,8 @@ public class ProductoServlet extends HttpServlet {
 		List<Categoria> categorias = categoriaService.listarCategorias();
 		request.setAttribute("categorias", categorias);
 		
-		List<Presentacion> presentacion = presentacionService.listarPresentaciones();
-		request.setAttribute("presentacion", presentacion);
+		List<Presentacion> presentaciones = presentacionService.listarPresentaciones();
+		request.setAttribute("presentaciones", presentaciones);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
 		dispatcher.forward(request, response);

@@ -13,7 +13,7 @@ public class CategoriaServiceImpl implements CategoriaService {
 		try {
 			SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
 			CategoriaMapper categoriaMapper = session.getMapper(CategoriaMapper.class);
-			return categoriaMapper.listarCategoria();
+			return categoriaMapper.listarCategorias();
 		} catch (Exception e) {
 			System.out.println(e);
 			return null;

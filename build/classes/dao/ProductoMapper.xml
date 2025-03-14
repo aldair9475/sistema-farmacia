@@ -23,7 +23,7 @@
  	 <select id="listarProductos" resultMap="ProductoMap">
         SELECT *
         FROM productos
-        WHERE estado = '1'
+        WHERE estado_auditoria = '1'
     </select> 
     
     <select id="listarProductoPorMarca" parameterType="int" resultMap="ProductoMap">

@@ -5,5 +5,5 @@ import models.Categoria;
 
 
 public interface CategoriaMapper {
-	List<Categoria> listarCategoria();
+	List<Categoria> listarCategorias();
 }

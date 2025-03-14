@@ -12,7 +12,7 @@
   	</resultMap>
 
 	<select id="listarPresentaciones" resultMap="PresentacionMap">
-    SELECT idPresentacion, nombre, descripcion
+    SELECT id_presentacion, nombre, descripcion
     FROM presentacion
     WHERE estado_auditoria = 1
 	</select>
