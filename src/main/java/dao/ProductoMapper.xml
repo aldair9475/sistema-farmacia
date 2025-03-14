@@ -14,7 +14,7 @@
         <result column="descripcion" property="descripcion"/>
         <result column="imagenurl" property="imagenUrl"/>
         <result column="preciounitario" property="precioUnitario"/>
-        <result column="stock_actual" property="stockActual"/>
+        <result column="stockactual" property="stockActual"/>
         <result column="estado" property="estado"/>
     </resultMap>
   
