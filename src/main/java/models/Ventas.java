@@ -11,7 +11,6 @@ public class Ventas {
     private String EstadoVenta;
     private int Estado;
     
-    
 	public int getIdVenta() {
 		return idVenta;
 	}
