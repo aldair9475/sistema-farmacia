@@ -1,72 +1,125 @@
 package models;
 
+import java.sql.Date;
+
 public class Usuario {
 
 	private int idUsuario;
-    private String Nombre;
-    private String Apellido;
-    private String Usuario;
-    private String Contraseña;
-    private String DNI;
-    private String Telefono;
-    private String Email;
-    private int Estado;
-    
-    
+	private int idRol;
+	private String tipoDocumento;
+	private String numeroDocumento;
+	private String userName;
+	private String clave;
+	private String nombres;
+	private String apellidoPaterno;
+	private String apellidoMaterno;
+	private String correo;
+	private String telefono;
+	private String sexo;
+	private Date fechaNacimiento;
+
 	public int getIdUsuario() {
 		return idUsuario;
 	}
+
 	public void setIdUsuario(int idUsuario) {
 		this.idUsuario = idUsuario;
 	}
-	public String getNombre() {
-		return Nombre;
+
+	public int getIdRol() {
+		return idRol;
 	}
-	public void setNombre(String nombre) {
-		Nombre = nombre;
+
+	public void setIdRol(int idRol) {
+		this.idRol = idRol;
 	}
-	public String getApellido() {
-		return Apellido;
+
+	public String getTipoDocumento() {
+		return tipoDocumento;
 	}
-	public void setApellido(String apellido) {
-		Apellido = apellido;
+
+	public void setTipoDocumento(String tipoDocumento) {
+		this.tipoDocumento = tipoDocumento;
 	}
-	public String getUsuario() {
-		return Usuario;
+
+	public String getNumeroDocumento() {
+		return numeroDocumento;
 	}
-	public void setUsuario(String usuario) {
-		Usuario = usuario;
+
+	public void setNumeroDocumento(String numeroDocumento) {
+		this.numeroDocumento = numeroDocumento;
 	}
-	public String getContraseña() {
-		return Contraseña;
+
+	public String getUserName() {
+		return userName;
 	}
-	public void setContraseña(String contraseña) {
-		Contraseña = contraseña;
+
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
-	public String getDNI() {
-		return DNI;
+
+	public String getClave() {
+		return clave;
 	}
-	public void setDNI(String dNI) {
-		DNI = dNI;
+
+	public void setClave(String clave) {
+		this.clave = clave;
 	}
+
+	public String getNombres() {
+		return nombres;
+	}
+
+	public void setNombres(String nombres) {
+		this.nombres = nombres;
+	}
+
+	public String getApellidoPaterno() {
+		return apellidoPaterno;
+	}
+
+	public void setApellidoPaterno(String apellidoPaterno) {
+		this.apellidoPaterno = apellidoPaterno;
+	}
+
+	public String getApellidoMaterno() {
+		return apellidoMaterno;
+	}
+
+	public void setApellidoMaterno(String apellidoMaterno) {
+		this.apellidoMaterno = apellidoMaterno;
+	}
+
+	public String getCorreo() {
+		return correo;
+	}
+
+	public void setCorreo(String correo) {
+		this.correo = correo;
+	}
+
 	public String getTelefono() {
-		return Telefono;
+		return telefono;
 	}
+
 	public void setTelefono(String telefono) {
-		Telefono = telefono;
+		this.telefono = telefono;
 	}
-	public String getEmail() {
-		return Email;
+
+	public String getSexo() {
+		return sexo;
 	}
-	public void setEmail(String email) {
-		Email = email;
+
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
 	}
-	public int getEstado() {
-		return Estado;
+
+	public Date getFechaNacimiento() {
+		return fechaNacimiento;
 	}
-	public void setEstado(int estado) {
-		Estado = estado;
+
+	public void setFechaNacimiento(Date fechaNacimiento) {
+		this.fechaNacimiento = fechaNacimiento;
 	}
-    
-    
+
 }

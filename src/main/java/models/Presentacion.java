@@ -3,27 +3,31 @@ package models;
 public class Presentacion {
 
 	private int idPresentacion;
-    private String Nombre;
-    private String Descripcion;
-    
+	private String nombre;
+	private String descripcion;
+
 	public int getIdPresentacion() {
 		return idPresentacion;
 	}
+
 	public void setIdPresentacion(int idPresentacion) {
 		this.idPresentacion = idPresentacion;
 	}
+
 	public String getNombre() {
-		return Nombre;
+		return nombre;
 	}
+
 	public void setNombre(String nombre) {
-		Nombre = nombre;
+		this.nombre = nombre;
 	}
+
 	public String getDescripcion() {
-		return Descripcion;
+		return descripcion;
 	}
+
 	public void setDescripcion(String descripcion) {
-		Descripcion = descripcion;
+		this.descripcion = descripcion;
 	}
-    
-    
+
 }

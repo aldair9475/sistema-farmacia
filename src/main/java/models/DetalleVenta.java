@@ -3,49 +3,67 @@ package models;
 public class DetalleVenta {
 
 	private int idDetalleVenta;
-    private int idVenta;
-    private int idProducto;
-    private double PrecioUnitario;
-    private int Cantidad;
-    private int Estado;
-    
-    
+	private int idVenta;
+	private int idProducto;
+	private int cantidad;
+	private double precioUnitario;
+	private double subTotal;
+	private double igv;
+
 	public int getIdDetalleVenta() {
 		return idDetalleVenta;
 	}
+
 	public void setIdDetalleVenta(int idDetalleVenta) {
 		this.idDetalleVenta = idDetalleVenta;
 	}
+
 	public int getIdVenta() {
 		return idVenta;
 	}
+
 	public void setIdVenta(int idVenta) {
 		this.idVenta = idVenta;
 	}
+
 	public int getIdProducto() {
 		return idProducto;
 	}
+
 	public void setIdProducto(int idProducto) {
 		this.idProducto = idProducto;
 	}
-	public double getPrecioUnitario() {
-		return PrecioUnitario;
-	}
-	public void setPrecioUnitario(double precioUnitario) {
-		PrecioUnitario = precioUnitario;
-	}
+
 	public int getCantidad() {
-		return Cantidad;
+		return cantidad;
 	}
+
 	public void setCantidad(int cantidad) {
-		Cantidad = cantidad;
+		this.cantidad = cantidad;
 	}
-	public int getEstado() {
-		return Estado;
+
+	public double getPrecioUnitario() {
+		return precioUnitario;
 	}
-	public void setEstado(int estado) {
-		Estado = estado;
+
+	public void setPrecioUnitario(double precioUnitario) {
+		this.precioUnitario = precioUnitario;
 	}
-    
-    
+
+	public double getSubTotal() {
+		return subTotal;
+	}
+
+	public void setSubTotal(double subTotal) {
+		this.subTotal = subTotal;
+	}
+
+	public double getIgv() {
+		return igv;
+	}
+
+	public void setIgv(double igv) {
+		this.igv = igv;
+	}
+
 }

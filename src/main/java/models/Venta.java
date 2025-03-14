@@ -1,64 +1,89 @@
 package models;
 
+import java.sql.Date;
+
 public class Venta {
 
 	private int idVenta;
-    private int idUsuario;
-    private int idEmpleado;
-    private String Fecha;
-    private String MetodoPago;
-    private double Total;
-    private String EstadoVenta;
-    private int Estado;
-    
+	private int idUsuarioComprador;
+	private Date fechaVenta;
+	private int idMetodoPago;
+	private int idMetodoEnvio;
+	private String numeroBoleta;
+	private String boletaUrl;
+	private String montoTotal;
+	private String estado;
+
 	public int getIdVenta() {
 		return idVenta;
 	}
+
 	public void setIdVenta(int idVenta) {
 		this.idVenta = idVenta;
 	}
-	public int getIdUsuario() {
-		return idUsuario;
+
+	public int getIdUsuarioComprador() {
+		return idUsuarioComprador;
 	}
-	public void setIdUsuario(int idUsuario) {
-		this.idUsuario = idUsuario;
+
+	public void setIdUsuarioComprador(int idUsuarioComprador) {
+		this.idUsuarioComprador = idUsuarioComprador;
 	}
-	public int getIdEmpleado() {
-		return idEmpleado;
+
+	public Date getFechaVenta() {
+		return fechaVenta;
 	}
-	public void setIdEmpleado(int idEmpleado) {
-		this.idEmpleado = idEmpleado;
+
+	public void setFechaVenta(Date fechaVenta) {
+		this.fechaVenta = fechaVenta;
 	}
-	public String getFecha() {
-		return Fecha;
+
+	public int getIdMetodoPago() {
+		return idMetodoPago;
 	}
-	public void setFecha(String fecha) {
-		Fecha = fecha;
+
+	public void setIdMetodoPago(int idMetodoPago) {
+		this.idMetodoPago = idMetodoPago;
 	}
-	public String getMetodoPago() {
-		return MetodoPago;
+
+	public int getIdMetodoEnvio() {
+		return idMetodoEnvio;
 	}
-	public void setMetodoPago(String metodoPago) {
-		MetodoPago = metodoPago;
+
+	public void setIdMetodoEnvio(int idMetodoEnvio) {
+		this.idMetodoEnvio = idMetodoEnvio;
 	}
-	public double getTotal() {
-		return Total;
+
+	public String getNumeroBoleta() {
+		return numeroBoleta;
 	}
-	public void setTotal(double total) {
-		Total = total;
+
+	public void setNumeroBoleta(String numeroBoleta) {
+		this.numeroBoleta = numeroBoleta;
 	}
-	public String getEstadoVenta() {
-		return EstadoVenta;
+
+	public String getBoletaUrl() {
+		return boletaUrl;
 	}
-	public void setEstadoVenta(String estadoVenta) {
-		EstadoVenta = estadoVenta;
+
+	public void setBoletaUrl(String boletaUrl) {
+		this.boletaUrl = boletaUrl;
 	}
-	public int getEstado() {
-		return Estado;
+
+	public String getMontoTotal() {
+		return montoTotal;
 	}
-	public void setEstado(int estado) {
-		Estado = estado;
+
+	public void setMontoTotal(String montoTotal) {
+		this.montoTotal = montoTotal;
 	}
-    
-    
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
 }

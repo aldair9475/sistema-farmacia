@@ -69,7 +69,7 @@
 			    	for(Categoria categoria : categorias){
 			    
 			    %>
-				<a href="medicamentos?idCategoria=<%= categoria.getIdCategoria() %>"
+				<a href="#"
 					class="text-green-600 font-bold text-sm flex items-center gap-1 hover:text-green-600">
 					<i class="fas fa-tag text-sky-600"></i> <%= categoria.getNombre() %>
 				</a>
