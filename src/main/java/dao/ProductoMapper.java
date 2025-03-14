@@ -1,10 +1,9 @@
 package dao;
 
 import java.util.List;
-import models.Producto;
+import models.Productos;
 
 public interface ProductoMapper {
 
-	List<Producto> listarProductos();
-	List<Producto> listarProductoPorMarca(int idMarca);
+	List<Productos> listarProductos();
 }

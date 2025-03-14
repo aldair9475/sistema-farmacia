@@ -1,11 +1,10 @@
 package services;
 
 import java.util.List;
-import models.Producto;
+import models.Productos;
 
 public interface ProductoService {
 	
-	List<Producto> listarProductos();
-	List<Producto> listarProductoPorMarca(int idMarca);
+	List<Productos> listarProductos();
 
 }
