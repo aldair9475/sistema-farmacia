@@ -1,8 +1,8 @@
 package models;
 
-public class Medicamento {
-	
-	private int idMedicamento;
+public class Producto {
+
+	private int idProducto;
 	private int idCategoria;
 	private int idMarca;
 	private int idPresentacion;
@@ -15,11 +15,11 @@ public class Medicamento {
 	private int stockActual;
 	private String estado;
 	
-	public int getIdMedicamento() {
-		return idMedicamento;
+	public int getIdProducto() {
+		return idProducto;
 	}
-	public void setIdMedicamento(int idMedicamento) {
-		this.idMedicamento = idMedicamento;
+	public void setIdProducto(int idProducto) {
+		this.idProducto = idProducto;
 	}
 	public int getIdCategoria() {
 		return idCategoria;
@@ -89,5 +89,5 @@ public class Medicamento {
 	}
 	
 	
-
+	
 }

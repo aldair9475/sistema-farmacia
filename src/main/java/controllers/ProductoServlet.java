@@ -9,35 +9,50 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import models.Categoria;
 import models.Marca;
-import models.Medicamento;
+import models.Presentacion;
+import models.Producto;
+import services.CategoriaService;
 import services.MarcaService;
-import services.MedicamentoService;
+import services.PresentacionService;
+import services.ProductoService;
+import services.impl.CategoriaServiceImpl;
 import services.impl.MarcaServiceImpl;
-import services.impl.MedicamentoServiceImpl;
+import services.impl.ProductoServiceImpl;
+import services.impl.PresentacionServiceImpl;
 
-@WebServlet("/medicamentos")
-public class MedicamentosServlet extends HttpServlet {
+@WebServlet("/productos")
+public class ProductoServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
-	private final MedicamentoService medicamentoService;
+	private final ProductoService productoService;
 	private final MarcaService marcaService;
-       
+	private final CategoriaService categoriaService;
+	private final PresentacionService presentacionService;
     
-    public MedicamentosServlet() {
+    public ProductoServlet() {
         super();
-        medicamentoService = new MedicamentoServiceImpl();
+        productoService = new ProductoServiceImpl();
         marcaService = new MarcaServiceImpl();
+        categoriaService = new CategoriaServiceImpl();
+		presentacionService = new PresentacionServiceImpl();
     }
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		List<Medicamento> medicamentos = medicamentoService.listarMedicamentos();
-		request.setAttribute("medicamentos", medicamentos);
+		List<Producto> productos = productoService.listarProductos();
+		request.setAttribute("productos", productos);
 		
 		List<Marca> marcas = marcaService.listarMarcas();
 		request.setAttribute("marcas", marcas);
+		
+		List<Presentacion> presentaciones = presentacionService.listarPresentaciones();
+		request.setAttribute("presentaciones", presentaciones);
+		
+		List<Categoria> categorias = categoriaService.listarCategorias();
+		request.setAttribute("categorias", categorias);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
 		dispatcher.forward(request, response);

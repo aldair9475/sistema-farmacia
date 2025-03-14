@@ -3,10 +3,10 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
- <mapper namespace="dao.MedicamentoMapper">
+ <mapper namespace="dao.ProductoMapper">
  
- 	<resultMap id="MedicamentoMap" type="models.Medicamento" >
- 		<id column="id_medicamento" property="idMedicamento"/>
+ 	<resultMap id="ProductoMap" type="models.Producto" >
+ 		<id column="id_producto" property="idProducto"/>
  		<result column="id_categoria" property="idCategoria"/>
  		<result column="id_marca" property="idMarca"/>
  		<result column="id_presentacion" property="idPresentacion"/>
@@ -20,12 +20,16 @@
  		<result column="estado" property="estado"/>
  	</resultMap>
   
- 	<select id="listarMedicamentos" resultMap="MedicamentoMap">
- 		SELECT id_medicamento, id_categoria, id_marca, id_presentacion, codigo, nombre, descripcion,
+ 	<select id="listarProductos" resultMap="ProductoMap">
+ 		SELECT id_producto, id_categoria, id_marca, id_presentacion, codigo, nombre, descripcion,
  		       registro_sanitario, imagen_url, precio_unitario, stock_actual, estado
- 		FROM medicamentos
+ 		FROM productos
  		WHERE estado_auditoria = '1'
  	</select> 
+ 	
+ 	<select id="listarProductoPorMarca" parameterType="int" resultMap="ProductoMap">
+    SELECT * FROM productos WHERE id_marca = #{idMarca}
+   </select>
  	
  	
  </mapper>

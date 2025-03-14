@@ -1,6 +1,6 @@
 package models;
 
-public class Ventas {
+public class Venta {
 
 	private int idVenta;
     private int idUsuario;
