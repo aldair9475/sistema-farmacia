@@ -11,6 +11,6 @@
  
 #Diseño de la BD
 
-file:///C:/Users/USER/Downloads/Untitled.pdf
+file:///C:/Users/USER/Downloads/Diagrama%20BD.pdf
 
 
