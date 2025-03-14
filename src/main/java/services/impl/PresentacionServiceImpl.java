@@ -9,11 +9,11 @@ import services.PresentacionService;
 public class PresentacionServiceImpl implements PresentacionService {
 
 	@Override
-	public List<Presentacion> listarPresentacion() {
+	public List<Presentacion> listarPresentaciones() {
 		try {
 			SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
 			PresentacionMapper presentacionMapper = session.getMapper(PresentacionMapper.class);
-			return presentacionMapper.listarPresentacion();
+			return presentacionMapper.listarPresentaciones();
 		} catch (Exception e) {
 			System.out.println(e);
 			return null;

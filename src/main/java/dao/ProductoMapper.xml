@@ -6,24 +6,29 @@
  <mapper namespace="dao.ProductoMapper">
  
  	<resultMap id="ProductoMap" type="models.Producto">
-        <id column="idproducto" property="idProducto"/>
-        <result column="idcategoria" property="idCategoria"/>
-        <result column="idmarca" property="idMarca"/>
-        <result column="idpresentacion" property="idPresentacion"/>
+        <id column="id_producto" property="idProducto"/>
+        <result column="id_categoria" property="idCategoria"/>
+        <result column="id_marca" property="idMarca"/>
+        <result column="id_presentacion" property="idPresentacion"/>
+         <result column="codigo" property="codigo"/>
         <result column="nombre" property="nombre"/>
         <result column="descripcion" property="descripcion"/>
-        <result column="imagenurl" property="imagenUrl"/>
-        <result column="preciounitario" property="precioUnitario"/>
-        <result column="stockactual" property="stockActual"/>
+         <result column="registro_sanitario" property="registroSanitario"/>
+        <result column="imagen_url" property="imagenUrl"/>
+        <result column="precio_unitario" property="precioUnitario"/>
+        <result column="stock_actual" property="stockActual"/>
         <result column="estado" property="estado"/>
     </resultMap>
   
  	 <select id="listarProductos" resultMap="ProductoMap">
-        SELECT idProducto, idCategoria, idMarca, idPresentacion, nombre, descripcion,
-               imagenUrl, precioUnitario, stockActual, estado
+        SELECT *
         FROM productos
         WHERE estado = '1'
     </select> 
+    
+    <select id="listarProductoPorMarca" parameterType="int" resultMap="ProductoMap">
+    SELECT * FROM productos WHERE id_marca = #{idMarca}
+  </select>
  	
  	
  </mapper>

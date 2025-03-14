@@ -16,7 +16,7 @@
  	<select id="listarMarcas" resultMap="MarcaMap">
  		SELECT id_marca, nombre, descripcion, imagen_url, fabricante
  		FROM marcas
- 		WHERE estado_auditoria = '1'
+ 		WHERE estado_auditora = 1
  	</select>
  	
  </mapper>

@@ -6,16 +6,17 @@
  <mapper namespace="dao.MarcaMapper">
  
  	<resultMap id="MarcaMap" type="models.Marca" >
- 		<id column="idmarca" property="idMarca"/>
+ 		<id column="id_marca" property="idMarca"/>
  		<result column="nombre" property="nombre"/>
  		<result column="descripcion" property="descripcion"/>
- 		<result column="imagenurl" property="imagenUrl"/>
+ 		<result column="imagen_url" property="imagenUrl"/>
  		<result column="fabricante" property="fabricante"/>
  	</resultMap>
  
  	<select id="listarMarcas" resultMap="MarcaMap">
- 		SELECT idmarca, nombre, descripcion, imagenurl, fabricante
+ 		SELECT id_marca, nombre, descripcion, imagen_url, fabricante
  		FROM marcas
+ 		WHERE estado_auditora = 1
  	</select>
  	
  </mapper>

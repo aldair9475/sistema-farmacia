@@ -3,13 +3,17 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-  <resultMap id="PresentacionMap" type="models.Presentacion">
-    <id column="idpresentacion" property="idPresentacion"/>
+  <mapper namespace="dao.PresentacionMapper">
+  
+  	<resultMap id="PresentacionMap" type="models.Presentacion">
+    <id column="id_presentacion" property="idPresentacion"/>
     <result column="nombre" property="nombre"/>
     <result column="descripcion" property="descripcion"/>
-</resultMap>
+  	</resultMap>
 
-<select id="listarPresentaciones" resultMap="PresentacionMap">
+	<select id="listarPresentaciones" resultMap="PresentacionMap">
     SELECT idPresentacion, nombre, descripcion
     FROM presentacion
-</select>
+    WHERE estado_auditoria = 1
+	</select>
+ </mapper>

@@ -5,31 +5,30 @@
   
  <mapper namespace="dao.ProductoMapper">
  
- 	<resultMap id="ProductoMap" type="models.Producto" >
- 		<id column="id_producto" property="idProducto"/>
- 		<result column="id_categoria" property="idCategoria"/>
- 		<result column="id_marca" property="idMarca"/>
- 		<result column="id_presentacion" property="idPresentacion"/>
- 		<result column="codigo" property="codigo"/>
- 		<result column="nombre" property="nombre"/>
- 		<result column="descripcion" property="descripcion"/>
- 		<result column="registro_sanitario" property="registroSanitario"/>
- 		<result column="imagen_url" property="imagenUrl"/>
- 		<result column="precio_unitario" property="precioUnitario"/>
- 		<result column="stock_actual" property="stockActual"/>
- 		<result column="estado" property="estado"/>
- 	</resultMap>
+ 	<resultMap id="ProductoMap" type="models.Producto">
+        <id column="id_producto" property="idProducto"/>
+        <result column="id_categoria" property="idCategoria"/>
+        <result column="id_marca" property="idMarca"/>
+        <result column="id_presentacion" property="idPresentacion"/>
+         <result column="codigo" property="codigo"/>
+        <result column="nombre" property="nombre"/>
+        <result column="descripcion" property="descripcion"/>
+         <result column="registro_sanitario" property="registroSanitario"/>
+        <result column="imagen_url" property="imagenUrl"/>
+        <result column="precio_unitario" property="precioUnitario"/>
+        <result column="stock_actual" property="stockActual"/>
+        <result column="estado" property="estado"/>
+    </resultMap>
   
- 	<select id="listarProductos" resultMap="ProductoMap">
- 		SELECT id_producto, id_categoria, id_marca, id_presentacion, codigo, nombre, descripcion,
- 		       registro_sanitario, imagen_url, precio_unitario, stock_actual, estado
- 		FROM productos
- 		WHERE estado_auditoria = '1'
- 	</select> 
- 	
- 	<select id="listarProductoPorMarca" parameterType="int" resultMap="ProductoMap">
+ 	 <select id="listarProductos" resultMap="ProductoMap">
+        SELECT *
+        FROM productos
+        WHERE estado = '1'
+    </select> 
+    
+    <select id="listarProductoPorMarca" parameterType="int" resultMap="ProductoMap">
     SELECT * FROM productos WHERE id_marca = #{idMarca}
-   </select>
+  </select>
  	
  	
  </mapper>

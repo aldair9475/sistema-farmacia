@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import models.Marca;
-import models.Productos;
+import models.Producto;
 import models.Categoria;
 import models.Presentacion;
 import services.MarcaService;
@@ -22,8 +22,8 @@ import services.PresentacionService;
 import services.impl.CategoriaServiceImpl;
 import services.impl.PresentacionServiceImpl;
 
-@WebServlet("/medicamentos")
-public class MedicamentosServlet extends HttpServlet {
+@WebServlet("/productos")
+public class ProductoServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 	private final ProductoService productoService;
@@ -32,7 +32,7 @@ public class MedicamentosServlet extends HttpServlet {
 	private final PresentacionService presentacionService;
        
     
-    public MedicamentosServlet() {
+    public ProductoServlet() {
         super();
         productoService = new ProductoServiceImpl();
         marcaService = new MarcaServiceImpl();
@@ -43,7 +43,7 @@ public class MedicamentosServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		List<Productos> productos = productoService.listarProductos();
+		List<Producto> productos = productoService.listarProductos();
 		request.setAttribute("productos", productos);
 		
 		List<Marca> marcas = marcaService.listarMarcas();
@@ -52,7 +52,7 @@ public class MedicamentosServlet extends HttpServlet {
 		List<Categoria> categorias = categoriaService.listarCategorias();
 		request.setAttribute("categorias", categorias);
 		
-		List<Presentacion> presentacion = presentacionService.listarPresentacion();
+		List<Presentacion> presentacion = presentacionService.listarPresentaciones();
 		request.setAttribute("presentacion", presentacion);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");

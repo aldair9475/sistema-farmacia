@@ -5,5 +5,5 @@ import models.Presentacion;
 
 public interface PresentacionService {
 	
-	List<Presentacion> listarPresentacion();
+	List<Presentacion> listarPresentaciones();
 }

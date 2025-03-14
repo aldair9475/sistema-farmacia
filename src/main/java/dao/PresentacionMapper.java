@@ -5,5 +5,5 @@ import models.Presentacion;
 
 public interface PresentacionMapper {
 
-	List<Presentacion> listarPresentacion();
+	List<Presentacion> listarPresentaciones();
 }

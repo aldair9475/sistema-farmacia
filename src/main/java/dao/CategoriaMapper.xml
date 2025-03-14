@@ -5,16 +5,15 @@
   
   <mapper namespace="dao.CategoriaMapper">
   	<resultMap id="CategoriaMap" type="models.Categoria">
-    <id column="idcategoria" property="idCategoria"/>
+    <id column="id_categoria" property="idCategoria"/>
     <result column="nombre" property="nombre"/>
-    <result column="imagenurl" property="imagenUrl"/>
     <result column="descripcion" property="descripcion"/>
-    <result column="estado" property="estado"/>
+    
 </resultMap>
 
 <select id="listarCategorias" resultMap="CategoriaMap">
-    SELECT idCategoria, nombre, imagenUrl, descripcion, estado
-    FROM categoria
+    SELECT id_categoria, nombre, descripcion
+    FROM categorias
     WHERE estado = '1'
 </select>
   
