@@ -7,9 +7,9 @@
 
  ### Alcance
  Es una web diseñada para optimizar la vista de una farmacia, permitiendo un control eficiente tales como producto y categorias,
- Asegurando un seguimiento preciso de los productos en stock, incluidos medicamentos, artículos de aseo personal y otros productos farmacéuticos
+ asegurando un seguimiento preciso de los productos en stock, incluidos medicamentos, artículos de aseo personal y otros productos farmacéuticos
  
-#Diseño de la BD
+### Diseño de la BD
 
 ![image](https://github.com/user-attachments/assets/7decf77e-1251-409b-b8d6-8358abd4ab8f)
 
