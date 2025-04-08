@@ -10,10 +10,10 @@ public class Producto {
 	private String nombre;
 	private String descripcion;
 	private String registroSanitario;
-	private String imagenUrl;
 	private double precioUnitario;
 	private int stockActual;
 	private String estado;
+	private String imagenUrl;
 	
 	public int getIdProducto() {
 		return idProducto;
@@ -63,12 +63,6 @@ public class Producto {
 	public void setRegistroSanitario(String registroSanitario) {
 		this.registroSanitario = registroSanitario;
 	}
-	public String getImagenUrl() {
-		return imagenUrl;
-	}
-	public void setImagenUrl(String imagenUrl) {
-		this.imagenUrl = imagenUrl;
-	}
 	public double getPrecioUnitario() {
 		return precioUnitario;
 	}
@@ -86,6 +80,12 @@ public class Producto {
 	}
 	public void setEstado(String estado) {
 		this.estado = estado;
+	}
+	public String getImagenUrl() {
+		return imagenUrl;
+	}
+	public void setImagenUrl(String imagenUrl) {
+		this.imagenUrl = imagenUrl;
 	}
 	
 	

@@ -6,5 +6,7 @@ import models.Producto;
 public interface ProductoMapper {
 
 	List<Producto> listarProductos();
-	List<Producto> listarProductoPorMarca(int idMarca);
+	List<Producto> listarProductosPorIdMarca(int idMarca);
+	List<Producto> listarProductosPorIdCategoria(int idCategoria);
+	List<Producto> listarProductosPorIdProducto(int idProducto);
 }

@@ -14,21 +14,68 @@
         <result column="nombre" property="nombre"/>
         <result column="descripcion" property="descripcion"/>
          <result column="registro_sanitario" property="registroSanitario"/>
-        <result column="imagen_url" property="imagenUrl"/>
         <result column="precio_unitario" property="precioUnitario"/>
         <result column="stock_actual" property="stockActual"/>
         <result column="estado" property="estado"/>
+        <result column="imagen_url" property="imagenUrl"/>
     </resultMap>
   
  	 <select id="listarProductos" resultMap="ProductoMap">
-        SELECT *
-        FROM productos
-        WHERE estado_auditoria = '1'
+        SELECT
+	 		(
+				SELECT pi.imagen_url 
+				FROM producto_imagenes pi
+				WHERE pi.estado_auditoria = '1' AND pi.id_producto = p.id_producto
+				ORDER BY pi.fecha_creacion ASC
+				LIMIT 1
+			) imagen_url, 
+			 p.id_producto, p.id_categoria, p.id_marca,p.id_presentacion,p.codigo, p.nombre, 
+        p.descripcion, p.registro_sanitario, p.precio_unitario,p.stock_actual,p.estado
+ 		FROM productos p
+ 		WHERE p.estado_auditoria = '1'
     </select> 
     
-    <select id="listarProductoPorMarca" parameterType="int" resultMap="ProductoMap">
-    SELECT * FROM productos WHERE id_marca = #{idMarca}
+    <select id="listarProductosPorIdCategoria" parameterType="int" resultMap="ProductoMap">
+       SELECT
+	 		(
+				SELECT pi.imagen_url 
+				FROM producto_imagenes pi
+				WHERE pi.estado_auditoria = '1' AND pi.id_producto = p.id_producto
+				ORDER BY pi.fecha_creacion ASC
+				LIMIT 1
+			) imagen_url, 
+    	 	  p.id_producto, p.id_categoria, p.id_marca,p.id_presentacion,p.codigo, p.nombre, 
+        	  p.descripcion, p.registro_sanitario, p.precio_unitario,p.stock_actual,p.estado
+ 		FROM productos p 
+ 		WHERE p.estado_auditoria = '1' AND id_categoria = #{idCategoria}
+	</select>
+    
+    <select id="listarProductosPorIdMarca" parameterType="int" resultMap="ProductoMap">
+    SELECT
+	 		(
+				SELECT pi.imagen_url 
+				FROM producto_imagenes pi
+				WHERE pi.estado_auditoria = '1' AND pi.id_producto = p.id_producto
+				ORDER BY pi.fecha_creacion ASC
+				LIMIT 1
+			) imagen_url, 
+    	 	  p.id_producto, p.id_categoria, p.id_marca,p.id_presentacion,p.codigo, p.nombre, 
+        	  p.descripcion, p.registro_sanitario, p.precio_unitario,p.stock_actual,p.estado
+ 		FROM productos p 
+ 		WHERE p.estado_auditoria = '1' AND id_marca = #{idMarca}
   </select>
+  
+  <select id="listarProductosPorIdProducto" parameterType="int" resultMap="ProductoMap">
+	SELECT p.id_producto, p.id_categoria,p.id_marca,p.id_presentacion,p.codigo, p.nombre, 
+	       p.descripcion, p.registro_sanitario, p.precio_unitario,p.stock_actual, p.estado,pi.imagen_url
+	FROM productos p
+	LEFT JOIN producto_imagenes pi
+	ON pi.id_producto = p.id_producto
+	WHERE p.estado_auditoria = '1'
+	AND pi.estado_auditoria = '1'
+	AND p.id_producto = #{idProducto}
+	ORDER BY pi.fecha_creacion ASC;
+</select>
  	
  	
  </mapper>

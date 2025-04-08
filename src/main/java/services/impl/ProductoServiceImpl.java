@@ -20,18 +20,45 @@ public class ProductoServiceImpl implements ProductoService{
 			return null;
 		}
 	}
-
+	
 	@Override
-	public List<Producto> listarProductoPorMarca(int idMarca) {
+	public List<Producto> listarProductosPorIdCategoria(int idCategoria) {
 		try {
 			SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
 			ProductoMapper productoMapper = session.getMapper(ProductoMapper.class);
-			return productoMapper.listarProductoPorMarca(idMarca);
+			return productoMapper.listarProductosPorIdCategoria(idCategoria);
 
 		} catch (Exception e) {
 			System.out.println(e);
 			return null;
 		}
 	}
+
+	@Override
+	public List<Producto> listarProductosPorIdMarca(int idMarca) {
+		try {
+			SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
+			ProductoMapper productoMapper = session.getMapper(ProductoMapper.class);
+			return productoMapper.listarProductosPorIdMarca(idMarca);
+
+		} catch (Exception e) {
+			System.out.println(e);
+			return null;
+		}
+	}
+
+	@Override
+	public List<Producto> listarProductosPorIdProducto(int idProducto) {
+		try {
+			SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
+			ProductoMapper productoMapper = session.getMapper(ProductoMapper.class);
+			return productoMapper.listarProductosPorIdProducto(idProducto);
+		} catch (Exception e) {
+			System.out.println(e);
+			return null;
+		}
+	}
+
+
 
 }

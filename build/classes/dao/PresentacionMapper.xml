@@ -2,18 +2,18 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
-  <mapper namespace="dao.PresentacionMapper">
-  
-  	<resultMap id="PresentacionMap" type="models.Presentacion">
-    <id column="id_presentacion" property="idPresentacion"/>
-    <result column="nombre" property="nombre"/>
-    <result column="descripcion" property="descripcion"/>
-  	</resultMap>
+
+<mapper namespace="dao.PresentacionMapper">
+
+	<resultMap id="PresentacionMap" type="models.Presentacion">
+		<id column="id_presentacion" property="idPresentacion" />
+		<result column="nombre" property="nombre" />
+		<result column="descripcion" property="descripcion" />
+	</resultMap>
 
 	<select id="listarPresentaciones" resultMap="PresentacionMap">
-    SELECT id_presentacion, nombre, descripcion
-    FROM presentacion
-    WHERE estado_auditoria = 1
+		SELECT id_presentacion, nombre, descripcion
+		FROM presentacion
+		WHERE estado_auditoria = 1
 	</select>
- </mapper>
+</mapper>

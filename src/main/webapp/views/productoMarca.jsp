@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.List"%>
 <%@ page import="models.Producto"%>
-<%@ page import="models.Marca"%>
 <%@ page import="models.Categoria"%>
 <%@ page import="models.Presentacion"%>
 <%@ page import= "shared.Constants" %>
@@ -13,10 +12,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
-<title>SISTEMA FARMACIA</title>
+<title>PRODUCTO MARCA</title>
 </head>
 <body>
-
 	<header class="bg-white p-4 shadow-lg fixed top-0 right-0 left-0 ">
 		<nav class="flex items-center justify-between max-w-screen-xl mx-auto">
 			
@@ -75,34 +73,19 @@
 			</div>
 		</nav>
 	</header>
-		
+	
 	<main class="bg-gray-200 w-full">
     	<div>
         	<img class="w-full h-100 object-cover"
             src="https://imgs.search.brave.com/zRylaM4vesdeYxLZ7SigDODutth7KqHMunjgj9HY0c0/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvODc4/ODUyNzE4L2VzL2Zv/dG8vZmFybWFjJUMz/JUE5dXRpY28tY29u/LWNhamEtZGUtbGEt/bWVkaWNpbmEteS1w/YXF1ZXRlLWRlLWMl/QzMlQTFwc3VsYS5q/cGc_cz02MTJ4NjEy/Jnc9MCZrPTIwJmM9/cE5MVmd6T2pKcDY3/bU5DMlEzazVVMDBa/aFdvNHdXbjhnVUN6/c1JOTGtaMD0"
             alt="Farmacia">
     	</div>
-
-    	<% 
-    		List<Marca> marcas = (List<Marca>) request.getAttribute("marcas"); 
-    		 if (marcas != null && !marcas.isEmpty()) { 
-        %>
-    	<div class="flex flex-row flex-wrap justify-center p-4 gap-4">
-        <% for (Marca marca : marcas) { %>
-			<div class="flex flex-col items-center">
-				<a href="/sistema-farmacia/productos?idMarca=<%=marca.getIdMarca()%>">
-					<img class=" w-24 h-24 rounded-full aspect-square" src="<%=marca.getImagenUrl() != null ? marca.getImagenUrl(): Constants.IMAGEN_PRODUCTO_DEFAULT%>" alt="Marca">
-				</a>
-				<h4 class="text-center font-semibold text-gray-700"><%=marca.getNombre()%></h4>
-			</div>
-			<% } %>
-    	</div>
-    	<% } else { %>
-    	<p class="text-center text-gray-600">No se encontraron registros</p>
-    	<% } %>
   
+  		<%
+  		String nombreMarca = (String) request.getAttribute("nombreMarca");
+  		%>
     	<div class="flex justify-center mt-6">
-        <label class="text-2xl font-bold text-gray-800">Catálogo de Productos</label>
+          <label class="text-2xl font-bold text-gray-800">Marca <%= nombreMarca %></label>
     	</div>
 
     	<div class="flex flex-row gap-4 mt-4 w-full">    
@@ -124,8 +107,7 @@
 					<h3 class="text-lg font-semibold"><%=producto.getNombre()%></h3>
 					<p class="font-bold">S/ <%=String.format("%.2f", producto.getPrecioUnitario()).replace(',', '.')%></p>
 				  </a>
-				  <button class="w-full h-10 bg-green-700 text-white font-semibold rounded-md hover:bg-green-600 transition mt-2 cursor-pointer"
-				  		  onclick="agregarCarrito(<%=producto.getIdProducto()%>)">
+				  <button class="w-full h-10 bg-green-700 text-white font-semibold rounded-md hover:bg-green-600 transition mt-2 cursor-pointer">
 					Agregar al carrito
 				  </button>
 				</div>
@@ -146,16 +128,5 @@
     	</div>
 	</main>
 
-<script>
-	
-	async function agregarCarrito(idProducto){
-		console.log('agregarCarrito', idProducto);
-	
-		fetch('/sistema-farmacia/carrito?idProducto='+idProducto, {
-			method: 'POST'
-		});
-	}
-
-</script>
 </body>
 </html>

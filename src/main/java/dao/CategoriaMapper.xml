@@ -3,18 +3,17 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-  <mapper namespace="dao.CategoriaMapper">
+  	<mapper namespace="dao.CategoriaMapper">
   	<resultMap id="CategoriaMap" type="models.Categoria">
     <id column="id_categoria" property="idCategoria"/>
     <result column="nombre" property="nombre"/>
-    <result column="descripcion" property="descripcion"/>
-    
-</resultMap>
+    <result column="descripcion" property="descripcion"/> 
+	</resultMap>
 
-<select id="listarCategorias" resultMap="CategoriaMap">
-    SELECT id_categoria, nombre, descripcion
-    FROM categorias
-    WHERE estado_auditoria = '1'
-</select>
+	<select id="listarCategorias" resultMap="CategoriaMap">
+    	SELECT id_categoria, nombre, descripcion
+    	FROM categorias
+    	WHERE estado_auditoria = '1'
+	</select>
   
   </mapper>
