@@ -76,6 +76,14 @@
 	AND p.id_producto = #{idProducto}
 	ORDER BY pi.fecha_creacion ASC;
 </select>
+	
+	<select id="obtenerProductoPorIdProducto" parameterType="int" resultMap="ProductoMap">
+		SELECT id_producto, id_categoria, id_marca, id_presentacion, codigo, nombre,
+		descripcion,
+		registro_sanitario, precio_unitario, stock_actual, estado
+		FROM productos
+		WHERE estado_auditoria = '1' and id_producto = #{idProducto}
+	</select>
  	
  	
  </mapper>

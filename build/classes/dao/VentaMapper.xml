@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dao.VentaMapper">
+
+	<resultMap id="VentaMap" type="models.Venta">
+		<id column="id_venta" property="idVenta" />
+		<result column="codigo_interno" property="codigoInterno" />
+		<result column="id_usuario_comprador" property="idUsuarioComprador" />	
+		<result column="fecha_venta" property="fechaVenta" />
+		<result column="id_metodo_pago " property="idMetodoPago" />
+		<result column="id_metodo_envio " property="idMetodoEnvio" />
+		<result column="numero_boleta " property="numeroBoleta" />
+		<result column="boleta_url " property="boletaUrl" />
+		<result column="monto_total " property="montoTotal" />
+		<result column="estado " property="estado" />
+	</resultMap>
+	
+	<select id="obtenerVentaPorCodigoInterno" parameterType="String" resultMap="VentaMap">	
+		SELECT id_venta, codigo_interno, id_usuario_comprador, fecha_venta, id_metodo_pago,id_metodo_envio, 
+		numero_boleta, boleta_url, monto_total, estado
+		FROM ventas
+		WHERE estado_auditoria = '1' and codigo_interno = #{codigoInterno}
+	</select>
+
+	<insert id="insertarVenta" parameterType="models.Venta" useGeneratedKeys="true" keyProperty="idVenta">
+		INSERT INTO ventas (codigo_interno, id_usuario_comprador, fecha_venta, id_metodo_pago, id_metodo_envio,
+		numero_boleta, boleta_url, monto_total, estado)
+		VALUES (#{codigoInterno}, #{idUsuarioComprador}, #{fechaVenta}, #{idMetodoPago}, #{idMetodoEnvio},#{numeroBoleta},
+		#{boletaUrl}, #{montoTotal}, #{estado})
+	</insert>
+	
+	<update id="actualizarVentaMontoTotal" parameterType="Integer">
+		UPDATE ventas SET monto_total = (
+		SELECT SUM(subtotal)
+		FROM venta_detalle
+		WHERE venta_detalle.id_venta = ventas.id_venta
+		)
+		WHERE id_venta = #{idVenta}
+  </update>
+	
+</mapper>

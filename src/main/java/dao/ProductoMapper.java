@@ -9,4 +9,5 @@ public interface ProductoMapper {
 	List<Producto> listarProductosPorIdMarca(int idMarca);
 	List<Producto> listarProductosPorIdCategoria(int idCategoria);
 	List<Producto> listarProductosPorIdProducto(int idProducto);
+	Producto obtenerProductoPorIdProducto(int idProducto);
 }

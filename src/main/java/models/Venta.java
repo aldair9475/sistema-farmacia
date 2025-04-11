@@ -5,6 +5,7 @@ import java.sql.Date;
 public class Venta {
 
 	private int idVenta;
+	private String codigoInterno;
 	private int idUsuarioComprador;
 	private Date fechaVenta;
 	private int idMetodoPago;
@@ -20,6 +21,14 @@ public class Venta {
 
 	public void setIdVenta(int idVenta) {
 		this.idVenta = idVenta;
+	}
+
+	public String getCodigoInterno() {
+		return codigoInterno;
+	}
+
+	public void setCodigoInterno(String codigoInterno) {
+		this.codigoInterno = codigoInterno;
 	}
 
 	public int getIdUsuarioComprador() {
