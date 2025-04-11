@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <mapper namespace="dao.VentaDetalleMapper">
+ 
+ 	<resultMap id="VentaDetalleMap" type="models.VentaDetalle" >
+ 		<id column="id_venta_detalle" property="idVentaDetalle"/>
+ 		<result column="id_venta" property="idVenta"/>
+ 		<result column="id_producto" property="idProducto"/>
+ 		<result column="cantidad" property="cantidad"/>
+ 		<result column="precio_unitario" property="precioUnitario"/>
+ 		<result column="subtotal" property="subtotal"/>
+ 		<result column="igv" property="igv"/>
+ 		<result column="nombreProducto" property="nombreProducto"/>
+        <result column="imagenProducto" property="imagenProducto"/>
+        <result column="nombrePresentacion" property="nombrePresentacion"/>
+        <result column="monto_total" property="montoTotal"/>
+ 	</resultMap>
+ 
+ 	<select id="obtenerVentaDetallePorIdVentaYIdProducto" resultMap="VentaDetalleMap">
+ 		SELECT id_venta_detalle, id_venta, id_producto, cantidad, precio_unitario, subtotal, igv
+ 		FROM venta_detalle
+ 		WHERE estado_auditoria = '1' and id_venta = #{idVenta} and id_producto = #{idProducto}
+ 	</select>
+ 	
+ 	<insert id="insertarVentaDetalle" parameterType="models.VentaDetalle" useGeneratedKeys="true" keyProperty="idVentaDetalle">
+ 		INSERT INTO venta_detalle (id_venta, id_producto, precio_unitario, subtotal)
+ 		VALUES (#{idVenta}, #{idProducto}, #{precioUnitario}, #{subtotal})
+ 	</insert>
+ 	
+ 	<update id="aumentarVentaDetalleCantidad" parameterType="Integer">
+ 		UPDATE venta_detalle
+ 		SET cantidad = cantidad + 1
+ 		WHERE id_venta_detalle = #{idVentaDetalle}
+ 	</update >
+ 	
+ 	<update id="actualizarVentaDetalleSubTotal" parameterType="Integer">
+ 		UPDATE venta_detalle 
+		SET subtotal = precio_unitario * cantidad
+		WHERE id_venta_detalle = #{idVentaDetalle}
+ 	</update >
+ 	
+ 	<select id="listarVentaDetalleCarrito" parameterType="Integer" resultMap="VentaDetalleMap">
+ 		SELECT 
+    	p.nombre AS nombreProducto,
+    	(SELECT pi.imagen_url 
+    	 FROM producto_imagenes pi 
+     	WHERE pi.id_producto = p.id_producto 
+     	ORDER BY pi.fecha_creacion ASC 
+     	LIMIT 1) AS imagenProducto,
+    	pre.nombre AS nombrePresentacion,
+    	vd.cantidad,
+    	vd.precio_unitario,
+    	vd.subtotal,
+    	v.monto_total
+		FROM venta_detalle vd
+		JOIN productos p ON vd.id_producto = p.id_producto
+		LEFT JOIN presentacion pre ON p.id_presentacion = pre.id_presentacion
+		JOIN ventas v ON vd.id_venta = v.id_venta
+		WHERE v.id_venta = #{idVenta}
+		ORDER BY v.fecha_creacion DESC;
+ 	</select>
+ </mapper>
