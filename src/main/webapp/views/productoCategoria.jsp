@@ -101,7 +101,7 @@
                         for (Presentacion presentacion : presentaciones) {
                             if (producto.getIdPresentacion() == presentacion.getIdPresentacion()) {
                 %>
-                <div class="bg-white p-4 rounded-lg border border-gray-300 hover:shadow-lg transition flex flex-col items-center">
+                <div class="bg-white p-4 rounded-lg border border-gray-300 hover:shadow-lg transition flex flex-col items-center mx-auto">
 				  <a href="/sistema-farmacia/productos?idProducto=<%=producto.getIdProducto()%>" class="text-center">
 					<img class="w-full object-cover rounded-md" src="<%=producto.getImagenUrl() != null ? producto.getImagenUrl() : Constants.IMAGEN_PRODUCTO_DEFAULT%>" alt="<%=producto.getNombre()%>" width="120"> 
 					<span class="text-sm font-bold text-gray-500"><%=presentacion.getNombre()%></span>
