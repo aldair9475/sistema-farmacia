@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="dao.UsuarioMapper">
+
+    <resultMap id="UsuarioMap" type="models.Usuario">
+        <id column="id_usuario" property="idUsuario"/>
+        <result column="id_rol" property="idRol"/>
+        <result column="tipo_documento" property="tipoDocumento"/>
+        <result column="numero_documento" property="numeroDocumento"/>
+        <result column="username" property="username"/>
+        <result column="clave" property="clave"/>
+        <result column="nombres" property="nombres"/>
+        <result column="apellido_paterno" property="apellidoPaterno"/>
+        <result column="apellido_materno" property="apellidoMaterno"/>
+        <result column="correo" property="correo"/>
+        <result column="telefono" property="telefono"/>
+        <result column="sexo" property="sexo"/>
+        <result column="fecha_nacimiento" property="fechaNacimiento"/>
+        <result column="estado_auditoria" property="estadoAuditoria"/>
+        <result column="fecha_creacion" property="fechaCreacion"/>
+    </resultMap>
+
+    <select id="listarUsuarios" resultMap="UsuarioMap">
+        SELECT * FROM usuarios WHERE estado_auditoria = '1'
+    </select>
+
+    <insert id="insertarUsuario" parameterType="models.Usuario">
+        INSERT INTO usuarios (
+            id_rol, tipo_documento, numero_documento, username, clave,
+            nombres, apellido_paterno, apellido_materno, correo, telefono,
+            sexo, fecha_nacimiento
+        ) VALUES (
+            #{idRol}, #{tipoDocumento}, #{numeroDocumento}, #{username}, #{clave},
+            #{nombres}, #{apellidoPaterno}, #{apellidoMaterno}, #{correo}, #{telefono},
+            #{sexo}, #{fechaNacimiento}
+        )
+    </insert>
+
+</mapper>
