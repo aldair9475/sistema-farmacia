@@ -5,6 +5,7 @@
 <%@ page import="models.Marca"%>
 <%@ page import="models.Categoria"%>
 <%@ page import="models.Presentacion"%>
+<%@ page import="models.Usuario"%>
 <%@ page import= "shared.Constants" %>
 <!DOCTYPE html>
 <html>
@@ -42,10 +43,10 @@
 				<a href="# " class="text-gray-700 text-sm flex items-center gap-1 hover:text-green-600">
 					<i class="fas fa-address-book"></i> Contacto
 				</a> 
-				<a href="#" class="text-gray-700 text-sm flex items-center gap-1 hover:text-green-600">
+				<a href="/sistema-farmacia/usuario?accion=inicioSesion" class="text-gray-700 text-sm flex items-center gap-1 hover:text-green-600">
 					<i class="fas fa-user"></i> Iniciar sesión
 				</a> 
-				<a href="#"	class="text-gray-700 text-sm flex items-center gap-1 hover:text-green-600">
+				<a  href="/sistema-farmacia/usuario?accion=registro" class="text-gray-700 text-sm flex items-center gap-1 hover:text-green-600">
 					<i class="fas fa-user-circle"></i> Registro
 				</a>
 				<a href="/sistema-farmacia/carrito" class="relative text-blue-500 bg-cyan-100 hover:bg-sky-400 p-2 rounded-lg transition">
@@ -53,6 +54,15 @@
 					<span id="cantidadProductoCarrito" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">				
 						0
 				    </span>
+				</a>
+				 <% Usuario usuario = (Usuario) request.getAttribute("usuario"); %>
+				<a class="text-blue-500 cursor-pointer bg-cyan-100 hover:bg-sky-400 p-2 rounded-lg transition flex items-center gap-2">
+					 <i class="fas fa-user text-lg"></i>
+					 <span> 
+					 	<span
+							class="font-bold"> <%= usuario != null ? usuario.getUsername() : "" %>
+						</span>
+					</span>
 				</a>
 			</div>
 		</nav>

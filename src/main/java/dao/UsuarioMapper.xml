@@ -23,20 +23,23 @@
         <result column="fecha_creacion" property="fechaCreacion"/>
     </resultMap>
 
-    <select id="listarUsuarios" resultMap="UsuarioMap">
-        SELECT * FROM usuarios WHERE estado_auditoria = '1'
-    </select>
-
     <insert id="insertarUsuario" parameterType="models.Usuario">
         INSERT INTO usuarios (
-            id_rol, tipo_documento, numero_documento, username, clave,
+            tipo_documento, numero_documento, username, clave,
             nombres, apellido_paterno, apellido_materno, correo, telefono,
             sexo, fecha_nacimiento
         ) VALUES (
-            #{idRol}, #{tipoDocumento}, #{numeroDocumento}, #{username}, #{clave},
+            #{tipoDocumento}, #{numeroDocumento}, #{username}, #{clave},
             #{nombres}, #{apellidoPaterno}, #{apellidoMaterno}, #{correo}, #{telefono},
             #{sexo}, #{fechaNacimiento}
         )
     </insert>
+    
+    <select id="validarUsuario" parameterType="map" resultMap="UsuarioMap">
+    	SELECT id_rol,tipo_documento,numero_documento,username,clave,nombres
+    	       apellido_paterno, apellido_materno, correo, telefono,sexo
+        FROM usuarios
+    	WHERE username = #{username} AND clave = #{clave} AND estado_auditoria = 1
+   </select>
 
 </mapper>

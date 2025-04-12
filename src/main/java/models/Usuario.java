@@ -8,7 +8,7 @@ public class Usuario {
 	private int idRol;
 	private String tipoDocumento;
 	private String numeroDocumento;
-	private String userName;
+	private String username;
 	private String clave;
 	private String nombres;
 	private String apellidoPaterno;
@@ -17,6 +17,7 @@ public class Usuario {
 	private String telefono;
 	private String sexo;
 	private Date fechaNacimiento;
+	private int estadoAuditoria;
 
 	public int getIdUsuario() {
 		return idUsuario;
@@ -50,12 +51,14 @@ public class Usuario {
 		this.numeroDocumento = numeroDocumento;
 	}
 
-	public String getUserName() {
-		return userName;
+	
+
+	public String getUsername() {
+		return username;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getClave() {
@@ -121,5 +124,15 @@ public class Usuario {
 	public void setFechaNacimiento(Date fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
+
+	public int getEstadoAuditoria() {
+		return estadoAuditoria;
+	}
+
+	public void setEstadoAuditoria(int estadoAuditoria) {
+		this.estadoAuditoria = estadoAuditoria;
+	}
+	
+	
 
 }

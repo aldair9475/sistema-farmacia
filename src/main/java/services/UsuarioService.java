@@ -1,9 +1,12 @@
 package services;
-import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import models.Usuario;
 
 public interface UsuarioService {
 
 	void insertarUsuario(Usuario usuario);
-	List<Usuario> ListarUsuario();
+	Usuario validarUsuario(@Param("username") String username, @Param("clave") String clave);
+
 }

@@ -13,7 +13,7 @@
 	<section class="bg-gray-50 dark:bg-gray-900 min-h-screen flex items-center justify-center">
 		<div class="w-full max-w-4xl bg-white rounded-lg shadow-lg p-8 dark:bg-gray-800">
 			<h1	class="text-2xl font-bold text-gray-900 dark:text-white text-center mb-6">Crear	una cuenta</h1>
-			<form action="usuarios" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+			<form action="usuario" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-4">
 				<div>
 					<label for="tipoDocumento" class="block text-sm font-medium text-gray-900 dark:text-white">Tipo	de Documento</label> 
 					<select id="tipoDocumento" name="tipoDocumento"	class="w-full p-2.5 border rounded-lg dark:bg-gray-700 dark:text-white">
@@ -74,7 +74,7 @@
 				<div class="md:col-span-2 flex justify-center">
 					<p class="text-sm font-light text-gray-500 dark:text-gray-400">
 						¿Ya tienes una cuenta? 
-					   <a href="/sistema-farmacia/usuarios" class="font-medium text-blue-600 hover:underline dark:text-blue-500 ml-1">
+					   <a href="/sistema-farmacia/usuario?accion=inicioSesion" class="font-medium text-blue-600 hover:underline dark:text-blue-500 ml-1">
 							Iniciar Sesión aquí 
 					   </a>
 					</p>

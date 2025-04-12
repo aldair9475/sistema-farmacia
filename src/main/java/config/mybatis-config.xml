@@ -27,5 +27,6 @@
           <mapper resource="dao/PresentacionMapper.xml"/>
            <mapper resource="dao/VentaMapper.xml"/>
             <mapper resource="dao/VentaDetalleMapper.xml"/>
+            <mapper resource="dao/UsuarioMapper.xml"/>
     </mappers>
 </configuration>
