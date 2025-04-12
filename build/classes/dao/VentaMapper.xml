@@ -35,8 +35,8 @@
 	<update id="actualizarVentaMontoTotal" parameterType="Integer">
 		UPDATE ventas SET monto_total = (
 		SELECT SUM(subtotal)
-		FROM venta_detalle
-		WHERE venta_detalle.id_venta = ventas.id_venta
+		FROM venta_detalle vd
+		WHERE vd.id_venta = ventas.id_venta AND vd.estado_auditoria = 1
 		)
 		WHERE id_venta = #{idVenta}
   </update>

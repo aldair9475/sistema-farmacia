@@ -44,9 +44,13 @@
             <a  href="#" class="text-gray-700 text-sm flex items-center gap-1 hover:text-green-600">
               <i class="fas fa-user-circle"></i> Registro
             </a> 
-            <a href="#" class="text-blue-500 bg-cyan-100 hover:bg-sky-400 p-2 rounded-lg transition">
-                <i class="fas fa-shopping-cart text-lg"></i>
-            </a> 
+            <%int contador = (int) request.getAttribute("contador"); %>
+            <a href="/sistema-farmacia/carrito" class="relative text-blue-500 bg-cyan-100 hover:bg-sky-400 p-2 rounded-lg transition">
+				<i class="fas fa-shopping-cart text-lg"></i>
+				<span id="cantidadProductoCarrito" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">				
+						<%= contador%>
+				</span>
+			</a>
         </div>
     </nav>
     
@@ -73,11 +77,10 @@
   </header>
   
   	<section class="mt-40">
+  		<div class="flex justify-center">
+  			<h1 class="text-xl font-bold mb-4">Carrito (<%= contador%>)</h1>
+  		</div>
 		  <div class="flex flex-col md:flex-row gap-6">
-        <!-- Tabla -->
-        <%
-        	
-        %>
         <div class="w-full md:w-2/3">
           <table class="w-full border-collapse border border-gray-200">
             <thead class="bg-gray-100">
@@ -106,6 +109,9 @@
                 <td class="border border-gray-300 px-4 py-2"><%= ventaDetalle.getCantidad() %></td>
                 <td class="border border-gray-300 px-4 py-2">S/ <%= String.format("%.2f",ventaDetalle.getPrecioUnitario()).replace(',','.') %></td>
                 <td class="border border-gray-300 px-4 py-2">S/ <%= String.format("%.2f", ventaDetalle.getPrecioUnitario()*ventaDetalle.getCantidad()).replace(',', '.') %></td>
+                <td class="border border-gray-300 px-4 py-2 text-red-600 cursor-pointer font-bold">
+        			<a href="/sistema-farmacia/carrito?idVentaDetalle=<%= ventaDetalle.getIdVentaDetalle() %>&accion=eliminar">Eliminar</a>
+    			</td>
               </tr>
               <%
         			}

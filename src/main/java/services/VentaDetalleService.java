@@ -11,4 +11,5 @@ public interface VentaDetalleService {
 	void aumentarVentaDetalleCantidad(Integer idVentaDetalle);
 	void actualizarVentaDetalleSubTotal(Integer idProducto);
 	List<VentaDetalle> listarVentaDetalleCarrito(Integer idVenta);
+	void eliminarPorIdVentaDetalle(Integer idVentaDetalle);
 }

@@ -48,7 +48,7 @@ public class VentaDetalleServiceImpl implements VentaDetalleService{
 			ventaDetalleMapper.aumentarVentaDetalleCantidad(idVentaDetalle);
 			session.commit();
 		} catch (Exception e) {
-			System.out.println("insertarVentaDetalle::"+e);
+			System.out.println("aumentarVentaDetalleCantidad::"+e);
 			e.printStackTrace();
 		}
 		
@@ -62,7 +62,7 @@ public class VentaDetalleServiceImpl implements VentaDetalleService{
 			ventaDetalleMapper.actualizarVentaDetalleSubTotal(idProducto);
 			session.commit();
 		} catch (Exception e) {
-			System.out.println("insertarVentaDetalle::"+e);
+			System.out.println("actualizarVentaDetalleSubTotal::"+e);
 			e.printStackTrace();
 		}
 		
@@ -79,6 +79,19 @@ public class VentaDetalleServiceImpl implements VentaDetalleService{
 			return null;
 
 		}
+	}
+
+	@Override
+	public void eliminarPorIdVentaDetalle(Integer idVentaDetalle) {
+		try {
+			SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
+			VentaDetalleMapper ventaDetalleMapper = session.getMapper(VentaDetalleMapper.class);
+			ventaDetalleMapper.eliminarPorIdVentaDetalle(idVentaDetalle);
+			session.commit();
+		} catch (Exception e) {
+			System.out.println("Error en eliminarPorIdVentaDetalle : "+e);
+		}
+		
 	}
 
 

@@ -13,4 +13,5 @@ public interface VentaDetalleMapper {
 	void aumentarVentaDetalleCantidad(Integer idVentaDetalle);
 	void actualizarVentaDetalleSubTotal(Integer idProducto);
 	List<VentaDetalle> listarVentaDetalleCarrito(Integer idVenta);
+	void eliminarPorIdVentaDetalle(Integer idVentaDetalle);
 }
