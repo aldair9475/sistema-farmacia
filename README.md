@@ -11,6 +11,7 @@
  
 #Diseño de la BD
 
-![image](https://github.com/user-attachments/assets/7decf77e-1251-409b-b8d6-8358abd4ab8f)
+![image](https://github.com/user-attachments/assets/34d79d51-7a62-4a5f-a91b-c1209f1a6dba)
+
 
 
