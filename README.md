@@ -1,13 +1,21 @@
-# FARMACIA FROSTPHARMA
+# GESTION DE FARMACIA
  Proyecto Sobre la gestion de una farmacia Usando java web y Mysql
 
  ### Integrantes
  - Aldair Soriano Patricio
  - Cristhian Daniel Uribe Auqui
 
+ ### Objetivo del Proyecto
+Este sistema web orientado a la gestión eficiente de una farmacia. Su principal propósito es facilitar la administración de productos farmacéuticos, mejorar la experiencia del usuario en la navegación, control y compra de medicamentos, y optimizar los procesos internos como ventas, control de stock y registro de usuarios.
+ 
  ### Alcance
- Es una web diseñada para optimizar la vista de una farmacia, permitiendo un control eficiente tales como producto y categorias,
- Asegurando un seguimiento preciso de los productos en stock, incluidos medicamentos, artículos de aseo personal y otros productos farmacéuticos
+ - Gestión de productos (medicamentos, productos de cuidado personal, etc)
+ - Registro y autenticación de usuarios.
+ - Registro de ventas y detalles de cada venta.
+
+ ### Tecnologías Utilizadas
+ - Java(Eclipse)
+ - MySQL
  
 #Diseño de la BD
 
